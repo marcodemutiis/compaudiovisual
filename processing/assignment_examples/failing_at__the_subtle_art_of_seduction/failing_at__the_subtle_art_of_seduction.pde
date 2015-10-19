@@ -1,9 +1,18 @@
+/*
+(failing at) the subtle art of seduction
+created by Marco De Mutiis, 2015.
+
+a simple sketch about the difficult relationship 
+between a mouse cursor and a string of text.. 
+you know that kind of love/hate relationships, don't you?
+*/
 PFont font;
  
  
 void setup()  {
-   
+  //canvas size
   size(640, 640);
+  //create font (go to Tools > Create Font...)
   font = loadFont("Helvetica-30.vlw");
   textFont(font);
    

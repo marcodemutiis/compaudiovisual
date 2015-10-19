@@ -1,4 +1,7 @@
 /*
+Enlarge an image based on amplitude of Audio Input, shout or whistle to see Ryan Gosling's abs..
+created by Marco De Mutiis based on Audio Library example, 2015.
+
 Be Careful with your speaker volume, you might produce a painful 
 feedback. We recommend to wear headphones for this example.
 */
