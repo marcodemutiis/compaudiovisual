@@ -1,9 +1,8 @@
 /*
-This example shows how to make a simple sampler and sequencer with the Sound library. In this
-sketch 5 different short samples are loaded and played back at different pitches, in this
-case 5 different octaves. The sequencer triggers and event every 200-1000 mSecs randomly.
-Each time a sound is played a colored rect with a random color is displayed.
-*/
+Keyboard Hip Hop
+ created by Marco De Mutiis, 2015. Modified from the Sound Library example Keyboard.
+ press keys to trigger smaples and associated images.
+ */
 
 import processing.sound.*;
 
@@ -12,46 +11,44 @@ SoundFile[] file;
 
 // Define the number of samples 
 int numsounds = 10;
-int value[] = {0,0,0};
+int value[] = {0, 0, 0};
+//define the images in an array
 PImage[] img = new PImage[numsounds];
 int current;
 boolean started;
 
-void setup(){
+void setup() {
   size(1080, 720);
   background(255);
-  
+
   // Create a Sound renderer and an array of empty soundfiles
   device = new AudioDevice(this, 48000, 32);
   file = new SoundFile[numsounds];
-  
-  // Load 5 soundfiles from a folder in a for loop. By naming the files 1., 2., 3., n.aif it is easy to iterate
+
+  // Load 10 soundfiles and 10 images from a folder in a for loop. By naming the files 1., 2., 3., n.aif it is easy to iterate
   // through the folder and load all files in one line of code.
-  for (int i = 0; i < numsounds; i++){
+  for (int i = 0; i < numsounds; i++) {
     file[i] = new SoundFile(this, (i+1) + ".aif");
     img[i] = loadImage((i+1) + ".jpg");
   }
-  
 }
 
-void draw(){
+void draw() {
 
-    background(value[0],value[1],value[2]);
-    if(started){
-image(img[current], 0, 0, img[current].width, img[current].height);
-    }
-}
+  background(0);
 
-
-
-void keyPressed() {
-  if(!started) started = true;
-  
-  for (int i=0; i < 3; i++) {  
-      value[i]=int(random(255));
+  if (started) {  //this boolean turns true at the first time we hit a key, so we don't show any image before the interaction
+    image(img[current], 0, 0, img[current].width, img[current].height);  //display the selected image
   }
- 
-  switch(key){
+}
+
+
+//if we press a key we enter the keyPressed() function
+void keyPressed() {
+  if (!started) started = true; //turn boolean true if it's false
+
+//depending on what key we push we trigger a specific image and sound sample
+  switch(key) {
   case 'a':
     file[0].play(0.5, 1.0);
     current= 0;
@@ -61,105 +58,105 @@ void keyPressed() {
     file[1].play(0.5, 1.0);
     current = 1;
     break;
-  
+
   case 'd':
     file[2].play(0.5, 1.0);
     current = 2;
     break;
-  
+
   case 'f':
     file[3].play(0.5, 1.0);
     current = 3;
     break;
-  
+
   case 'g':
     file[4].play(0.5, 1.0);
     current = 4;
     break;
-  
-   case 'h':
+
+  case 'h':
     file[5].play(1.0, 1.0);
     current = 5;
     break;
-   
-   case 'j':
+
+  case 'j':
     file[6].play(1.0, 1.0);
     current = 6;
     break;
 
-   case 'k':
+  case 'k':
     file[7].play(1.0, 1.0);
     current = 7;
     break;
-    
-   case 'l':
+
+  case 'l':
     file[8].play(1.0, 1.0);
     current = 8;
     break;
-    
-   case 'ö':
+
+  case 'ö':
     file[9].play(1.0, 1.0);
     current = 9;
     break;
-    
-   case 'ä':
+
+  case 'ä':
     file[0].play(2.0, 1.0);
     current = 0;
     break;
-    
-   case 'q':
+
+  case 'q':
     file[1].play(2.0, 1.0);
     current = 1;
     break;
-   
-   case 'w':
+
+  case 'w':
     file[2].play(2.0, 1.0);
     current = 2;
     break;    
-   
-   case 'e':
+
+  case 'e':
     file[3].play(2.0, 1.0);
     current = 3;
-   break;
-   
-   case 'r':
+    break;
+
+  case 'r':
     file[4].play(2.0, 1.0);
     current = 4;
-   break; 
-   
-   case 't':
+    break; 
+
+  case 't':
     file[0].play(3.0, 1.0);
     current = 0;
     break;
-    
-   case 'z':
+
+  case 'z':
     file[1].play(3.0, 1.0);
     current = 1;
     break;
-   
-   case 'u':
+
+  case 'u':
     file[2].play(3.0, 1.0);
     current = 2;
     break;    
-   
-   case 'i':
+
+  case 'i':
     file[3].play(3.0, 1.0);
     current = 3;
-   break;
-   
-   case 'o':
+    break;
+
+  case 'o':
     file[4].play(3.0, 1.0);
     current = 4;
     break;
-   
-   case 'p':
+
+  case 'p':
     file[0].play(4.0, 1.0);
     current = 0;
     break;    
-   
-   case 'ü':
+
+  case 'ü':
     file[1].play(4.0, 1.0);
     current = 1;
-   break;   
+    break;
   }
 }
