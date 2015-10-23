@@ -35,6 +35,9 @@ void draw() {
   if(totalTouches == 2){
     background(255, 0, 0);
   }
+  if(totalTouches == 3){
+    background(0, 255, 0);
+  }
 }
 
 void oscEvent(OscMessage m) {
@@ -44,4 +47,3 @@ void oscEvent(OscMessage m) {
    println(" typetag: "+m.typetag());
    println(" value = "+m.get(0).intValue());*/
 }
-
