@@ -11,26 +11,32 @@ void parseOSC(OscMessage m) {
     totalTouches = m.get(0).intValue();
   } 
 
-  for (int i = 0; i < totalTouches; i++) {
+  for (int i = 0; i < maxTouches; i++) {
 
     if (m.checkAddrPattern("/touches/ID")) {
-    } else if (m.checkAddrPattern("/touches/coordinates")) {
+      ID[i]= m.get(0).intValue();
+    } 
+   else if (m.checkAddrPattern("/touches/coordinates")) {
       //ID= m.get(0).intValue();
-      coordinatesX[i] =m.get(0).floatValue();
-      coordinatesY[i] = m.get(1).floatValue();
+      coordinatesX[ID[i]] =m.get(0).floatValue() -100;
+      coordinatesY[ID[i]] = m.get(1).floatValue() -100;
     } 
     else if (m.checkAddrPattern("/touches/majoraxis")) {
     //ID.get(0).intValue();
-    majoraxis[i] = m.get(0).floatValue();
+    majoraxis[ID[i]] = m.get(0).floatValue();
   } else if (m.checkAddrPattern("/touches/minoraxis")) {
     //ID.get(0).intValue();
-    minoraxis[id] =m.get(0).floatValue();
+    minoraxis[ID[i]] =m.get(0).floatValue();
   } else if (m.checkAddrPattern("/touches/pressure")) {
     //ID.get(0).intValue();
-    pressure[i] =m.get(0).floatValue();
+    pressure[ID[i]] =m.get(0).floatValue();
   } else if (m.checkAddrPattern("/touches/angle")) {
     //ID.get(0).intValue();
-      angle[id] =m.get(0).floatValue();
+      angle[ID[i]] =m.get(0).floatValue();
+  }
+  else if (m.checkAddrPattern("/touches/down")) {
+    //ID.get(0).intValue();
+      down[ID[i]] = m.get(0).intValue();
   }
   /*String output = "totalTouches: " + totalTouches + "\n"
     + " id: " + ID[i] + "\n"
