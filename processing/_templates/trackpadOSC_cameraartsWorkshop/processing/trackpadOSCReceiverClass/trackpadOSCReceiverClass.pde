@@ -34,15 +34,17 @@ void draw() {
     background(0, 255, 0, 100);
   }
 
-  fill(255, 255, 255, 100);
+  fill(255, 255, 255, 255);
+  noStroke();
   //translate(-100, -70);
-  for (int i =0; i< maxTouches; i++) {
-    if (down[i] != 0) {
+  for (int i = 0; i < maxTouches; i++) {
+    
       ellipse(coordinatesX[i], coordinatesY[i], pressure[i]*5, pressure[i]*5);
-    }
-    else
-      coordinatesX[i] = -1000; 
+   
+    if (down[i] == 0) {
+    coordinatesX[i] = -1000; 
     coordinatesY[i] = -1000;
+    }
   }
 }
 
@@ -53,4 +55,3 @@ void oscEvent(OscMessage m) {
    println(" typetag: "+m.typetag());
    println(" value = "+m.get(0).intValue());*/
 }
-
