@@ -65,15 +65,15 @@ void draw() {
     if (currentStars==1) {
       for (int j = 0; j < stars1.length; j++) {
         if (dist(coordinatesX[i], coordinatesY[i], stars1[j].x, stars1[j].y) < 50) {
-          if (firstTouch[i]) {
-            firstTouch[i] = false;
+          //if (firstTouch[i]) {
+            //firstTouch[i] = false;
             counter++;
               if (counter >= stars1.length) {
               unlocked = true;
               currentStars++;
               println(currentStars);
             }
-          }
+          //}
         }
       }
     }
