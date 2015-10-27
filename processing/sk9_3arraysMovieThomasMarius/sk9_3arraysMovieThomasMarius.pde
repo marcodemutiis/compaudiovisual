@@ -4,6 +4,8 @@ Movie[] Tosca;
 int counter;
 int max;
 
+int level = 1;
+
 void setup() {
   size(1920, 1080);
   //fullScreen(0);
@@ -22,18 +24,33 @@ void draw() {
 }
 
 void keyPressed() {
-  Tosca[counter].pause();
+
   if (key == CODED) {
     if (keyCode == LEFT) {
-      counter = 1,
+      Tosca[counter].pause();
+      if (level == 1) {
+        counter = 1;
+        level++;
+      }
+      if(level == 2){
+        counter = 5;
+        level++;
+      }
     }
-      if (keyCode == RIGHT) {
+    if (keyCode == RIGHT) {
+      Tosca[counter].pause();
+      if (level == 1) {
       counter = 2;
+      level++;
+      }
     }
     if (keyCode == UP) {
+      Tosca[counter].pause();
+      if (level == 1) {
       counter = 3;
+      level++;
+      }
     }
-    
   }
 }
 void movieEvent(Movie m) {
