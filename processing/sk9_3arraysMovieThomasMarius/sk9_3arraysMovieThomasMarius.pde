@@ -33,7 +33,7 @@ void keyPressed() {
         level++;
       }
       if(level == 2){
-        counter = 5;
+        counter = 0;
         level++;
       }
     }
