@@ -37,45 +37,43 @@ void setup() {
   //size(800, 600);
   fullScreen();
   oscP5 = new OscP5(this, 8338);
-    Cancer = new Movie(this, "Cancer.mp4");
+  Cancer = new Movie(this, "Cancer.mp4");
 
-  
+
   stars1[0] = new PVector(157, 66);
   stars1[1] = new PVector(790, 66);
   stars1[2] = new PVector(400, 455);
   stars1[3] = new PVector(724, 644);
   stars1[4] = new PVector(268, 822);
-
 }
 
- void movieEvent(Movie m) {
+void movieEvent(Movie m) {
   m.read();
-  }
-  
+}
+
 void draw() {
   noCursor();
-  image(Cancer, 0, 0, 800, 600);
-  if (currentStars == 1) {
-      background(50, 50, 50, 100);
-  }
-   
-
-  else if (currentStars == 2) {
-     Cancer.play();
-     // background(255, 200, 200, 100);
-  }
-
   
- /* if (totalTouches == 2) {
-    background(255, 0, 0, 100);
-  }*/
+  
+  if (currentStars == 1) {
+    background(50, 50, 50, 100);
+  } else if (currentStars == 2) {
+    Cancer.play();
+    image(Cancer, 0, 0, displayWidth, displayHeight);
+    // background(255, 200, 200, 100);
+  }
+
+
+  /* if (totalTouches == 2) {
+   background(255, 0, 0, 100);
+   }*/
 
 
 
   //check touches
   fill(255, 255, 255, 255);
   noStroke();
-  
+
   for (int i = 0; i < maxTouches; i++) {
 
     ellipse(coordinatesX[i], coordinatesY[i], pressure[i]*5, pressure[i]*5);
@@ -89,7 +87,6 @@ void draw() {
       coordinatesX[i] = -10000; 
       coordinatesY[i] = -10000;
     }
-    
   }
 
 
